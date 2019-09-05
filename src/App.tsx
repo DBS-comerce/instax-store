@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import ItemList from './components/ItemList'
+import LeftSidebar from './components/LeftSidebar'
+
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div data-text="DIMABOSS" className="glitch">DIMABOSS</div>
       </header>
+      <main>
+        <section className="store">
+          <section className="sidebar">
+              <LeftSidebar/>
+          </section>
+          <section className="content">
+              <ItemList/>
+          </section>
+        </section>
+      </main>
     </div>
   );
 }
