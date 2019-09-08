@@ -1,9 +1,14 @@
 import React from 'react';
 import './App.scss';
+import {Router, Route, Switch  } from 'react-router-dom';
+import { createHashHistory } from 'history';
+
 import ItemList from './components/ItemList'
 import LeftSidebar from './components/LeftSidebar'
+import About from './components/about'
 
 
+const history = createHashHistory({});
 const App: React.FC = () => {
   return (
     <div className="App">
@@ -13,10 +18,17 @@ const App: React.FC = () => {
       <main>
         <section className="store">
           <section className="sidebar">
-              <LeftSidebar/>
+              <LeftSidebar
+                history={history}
+              />
           </section>
           <section className="content">
-              <ItemList/>
+            <Router history={history}>
+              <Switch>
+                <Route exact path="/" component={ItemList} />
+                <Route exact path="/about" component={About} />
+              </Switch>
+            </Router>
           </section>
         </section>
       </main>
