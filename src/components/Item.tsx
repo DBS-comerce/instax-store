@@ -1,12 +1,22 @@
 import React from 'react';
 
-const Item: React.FC = () => {
+
+interface ItemProps {
+  name: string;
+  price: number;
+  image: string;
+}
+
+const Item: React.FC<ItemProps> = (props) => {
+
   return (
     <div className="item">
-        <img src="/src/assets/img/instax.jpg" alt=""/>
-        <div>Name</div>
-        <div>A long Item decription</div>
-        <div>Price: 40$</div>
+      <div className="item-image">
+        <img src={props.image} alt=""/>
+      </div>
+      <div>{props.name}</div>
+      <div>A long Item decription</div>
+      <div>Price: {props.price}$</div>
     </div>
   );
 }
