@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 import './App.scss';
 import {Router, Route, Switch  } from 'react-router-dom';
 import { createHashHistory } from 'history';
+import { connect } from 'react-redux';
 
+import items from './mockData/items'
 import ItemList from './components/ItemList'
 import LeftSidebar from './components/LeftSidebar'
 import About from './components/about'
+import {addNewElement} from './actions/items'
 
 
 const history = createHashHistory({});
-const App: React.FC = () => {
+
+const App: React.FC = (props) => {
+
+  const{addNewElement}:any = props
+  
+  useEffect(() => {
+    addNewElement(items)
+  })
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -36,4 +47,8 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  addNewElement
+}
+
+export default  connect(null, mapDispatchToProps)(App);
