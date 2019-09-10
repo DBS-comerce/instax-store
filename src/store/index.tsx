@@ -1,9 +1,17 @@
 import {createStore} from 'redux';
-import reducer from '../reducers';
+import { combineReducers } from 'redux'
 
+import {ItemsState} from './items/types'
+import {itemsReducer} from './items/reducer'
 
-  const store = createStore(
-    reducer,
-  );
+export interface ApplicationState {
+  items: ItemsState
+}
 
-  export default store;
+const store = createStore(
+  combineReducers({
+    items: itemsReducer
+  })
+);
+
+export default store;
