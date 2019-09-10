@@ -15,7 +15,7 @@ const ItemList: React.FC = (props) => {
   );
 }
 
-const itemsMap = (items: any) => {
+const itemsMap = (items: ItemType[]) => {
   const itemsList = items.map((item: ItemType , index: number)=>{
     return (<Item
               name={item.name}
@@ -25,7 +25,6 @@ const itemsMap = (items: any) => {
   })
 
   return itemsList
-  
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
