@@ -1,23 +1,35 @@
 import React from 'react';
 import Item from './Item';
-import items from '../mockData/items'
+import { connect } from 'react-redux';
+import {Item as ItemType} from '../store/items/types'
+import { ApplicationState } from '../store'
 
 
-
-const ItemList: React.FC = () => {
+const ItemList: React.FC = (props) => {
+  const {items: {data}}: any = props
+  const itemsList = itemsMap(data)
   return (
     <div className="item-list">
-      {itemsMap}
+      {itemsList}
     </div>
   );
 }
 
-const itemsMap = items.map((item , index)=>{
-  return <Item
-            name={item.name}
-            price={item.price}
-            image={item.image}
-          />
+const itemsMap = (items: any) => {
+  const itemsList = items.map((item: ItemType , index: number)=>{
+    return (<Item
+              name={item.name}
+              price={item.price}
+              image={item.image}
+            />)
+  })
+
+  return itemsList
+  
+}
+
+const mapStateToProps = (state: ApplicationState) => ({
+  items: state.items,
 })
 
-export default ItemList;
+export default connect(mapStateToProps, null)(ItemList);

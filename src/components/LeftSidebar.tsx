@@ -1,10 +1,11 @@
 import React from 'react';
+import { History } from 'history'
 
 interface LeftSidebarProps {
-  history: any;
+  history: History;
 }
 
-const redirect = (history:any, path: string) => {
+const redirect = (history: History, path: string) => {
   history.push(path)
 }
 
