@@ -1,8 +1,9 @@
 import React from 'react';
-import Item from './Item';
 import { connect } from 'react-redux';
-import {Item as ItemType} from '../store/items/types'
-import { ApplicationState } from '../store'
+
+import Item from './Item';
+import {Item as ItemType} from '../../store/items/types'
+import { ApplicationState } from '../../store'
 
 
 const ItemList: React.FC = (props) => {
@@ -18,9 +19,11 @@ const ItemList: React.FC = (props) => {
 const itemsMap = (items: ItemType[]) => {
   const itemsList = items.map((item: ItemType , index: number)=>{
     return (<Item
+              id={item.id}
               name={item.name}
               price={item.price}
               image={item.image}
+              description={item.description}
             />)
   })
 
