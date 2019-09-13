@@ -1,6 +1,6 @@
-import { Item } from './types'
+import { Item, ItemsActionTypes } from './types'
 
-export const addNewElement = (items: Item) => ({
-    type: 'ADD_ITEMS',
-    items,
+export const addNewElement = (items: Item[]) => ({
+    type: ItemsActionTypes.ADD_ITEMS,
+    payload: items,
 });
