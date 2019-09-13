@@ -9,21 +9,27 @@ import ItemList from './components/Items/ItemList'
 import ItemCard from './components/Items/ItemCard'
 import LeftSidebar from './components/LeftSidebar'
 import About from './components/about'
-import {addNewElement} from './actions/items'
+import {addNewElement as addNewElementAction} from './store/items/actions'
 
 
 const history = createHashHistory({});
 
-const App: React.FC = (props) => {
+interface PropsFromDispatch {
+  addNewElement: typeof addNewElementAction
+}
 
-  const{addNewElement}:any = props
+type AllProps = PropsFromDispatch
+
+const App: React.FC<AllProps> = (props) => {
+
+  const{addNewElement} = props
   
   addNewElement(items)
   
   return (
     <div className="App">
       <header className="App-header">
-        <div data-text="DIMABOSS" className="glitch">DIMABOSS</div>
+        <div data-text="INSTAXSTORE" className="glitch">INSTAXSTORE</div>
       </header>
       <main>
         <section className="store">
@@ -49,7 +55,7 @@ const App: React.FC = (props) => {
 }
 
 const mapDispatchToProps = {
-  addNewElement
+  addNewElement: addNewElementAction
 }
 
 export default  connect(null, mapDispatchToProps)(App);

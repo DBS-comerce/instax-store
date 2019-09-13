@@ -8,13 +8,15 @@ const Item: React.FC<ItemType> = (props) => {
 
   return (
     <div className="item">
-      <div className="item-image">
-        <Link to={`/item-card/${props.id}`}>
-          <img src={props.image} alt=""/>
-        </Link>
+      <div className="item-preview-info">
+        <div className="item-image">
+          <Link to={`/item-card/${props.id}`}>
+            <img src={props.image} alt={props.name}/>
+          </Link>
+        </div>
+        <div>{props.name}</div>
+        <div>Price: {props.price}$</div>
       </div>
-      <div>{props.name}</div>
-      <div>Price: {props.price}$</div>
     </div>
   );
 }

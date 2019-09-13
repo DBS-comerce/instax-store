@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { ItemsState } from './types'
+import { ItemsState, ItemsActionTypes } from './types'
 
 export const initialState: ItemsState = {
     data: [],
@@ -10,10 +10,10 @@ export const initialState: ItemsState = {
 
 const reducer: Reducer <ItemsState>  = ( state = initialState, action ) => {
     switch (action.type){
-        case 'ADD_ITEMS':
+        case ItemsActionTypes.ADD_ITEMS:
             return {
               ...state,
-              data: action.items,
+              data: action.payload,
             };
 
         default:

@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 
 import {ItemsState} from './items/types'
 import {itemsReducer} from './items/reducer'
+import {itemsCartReducer} from './cart/reducer'
 
 export interface ApplicationState {
   items: ItemsState
@@ -10,7 +11,8 @@ export interface ApplicationState {
 
 const store = createStore(
   combineReducers({
-    items: itemsReducer
+    items: itemsReducer,
+    itemsCart: itemsCartReducer
   })
 );
 

@@ -4,14 +4,37 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import {Item as ItemType, ItemsState} from '../../store/items/types'
 import { ApplicationState } from '../../store'
+import {addItemToCart as addItemToCartAction} from '../../store/cart/actions'
 
-type AllProps = ItemsState & RouteComponentProps
+interface CardRouterProps {
+    id: string;
+}
 
-const ItemCard: React.FC<AllProps> = (props: any) => {
+interface PropsFromDispatch {
+    addItemToCart: typeof addItemToCartAction
+}
+
+interface PropsFromState {
+    items: ItemsState
+}
+
+
+type AllProps = PropsFromState & RouteComponentProps<CardRouterProps> & PropsFromDispatch
+
+const addToCart = (id:number, addItemToCart: typeof addItemToCartAction) => {
+    console.log(id)
+    addItemToCart({
+        id,
+        count: 1
+    })
+}
+
+const ItemCard: React.FC<AllProps> = (props) => {
     const { id } = props.match.params;
-    const {items: {data}}: any = props
+    const {items: {data}, addItemToCart} = props;
+    console.log(props)
     
-    const itemCard: ItemType = getItem(data, id)
+    const itemCard: ItemType = getItem(data, parseInt(id))
     return (
         <div className="detail-container">
             <div className="detail-main">
@@ -25,7 +48,11 @@ const ItemCard: React.FC<AllProps> = (props: any) => {
                         <div className="item-price">{itemCard.price} $</div>
                     </div>
                     <div className="item-cart-button" >
-                        <div className="item-cart-button__text">Add to cart</div>
+                        <div 
+                        onClick={() => addToCart(itemCard.id, addItemToCart)}
+                        className="item-cart-button__text">
+                            Add to cart
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,13 +61,17 @@ const ItemCard: React.FC<AllProps> = (props: any) => {
     );
 }
 
-const getItem = (data: any, id: number) => {
+const getItem = (data: ItemType[], id: number) => {
     const itemCard: ItemType = data.filter((m: ItemType) =>  m.id ==  id)[0]
     return itemCard
 }
 
+const mapDispatchToProps = {
+    addItemToCart: addItemToCartAction
+}
+
 const mapStateToProps = (state: ApplicationState) => ({
     items: state.items,
-  })
+})
   
-export default connect(mapStateToProps, null)(ItemCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCard);
