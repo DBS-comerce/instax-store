@@ -9,6 +9,7 @@ import ItemList from './components/Items/ItemList'
 import ItemCard from './components/Items/ItemCard'
 import LeftSidebar from './components/LeftSidebar'
 import About from './components/about'
+import Cart from './components/Cart'
 import {addNewElement as addNewElementAction} from './store/items/actions'
 
 
@@ -45,6 +46,7 @@ const App: React.FC<AllProps> = (props) => {
                 <Route exact path="/" component={ItemList} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/item-card/:id" component={ItemCard} />
+                <Route exact path="/cart" component={Cart} />
               </Switch>
           </section>
           </Router>

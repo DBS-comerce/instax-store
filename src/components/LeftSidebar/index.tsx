@@ -14,7 +14,9 @@ const LeftSidebar: React.FC<LeftSidebarProps> = (props) => {
         <div className="sidebar-content-item">HOME</div>
       </Link>
       <div className="sidebar-content-item">CATALOG</div>
-      <div className="sidebar-content-item">CART</div>
+      <Link to="/cart">
+        <div className="sidebar-content-item">CART</div>
+      </Link>
       <Link to="/about">
         <div className="sidebar-content-item">ABOUT</div>
       </Link>

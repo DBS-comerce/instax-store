@@ -4,7 +4,9 @@ import { RouteComponentProps } from 'react-router-dom'
 
 import {Item as ItemType, ItemsState} from '../../store/items/types'
 import { ApplicationState } from '../../store'
-import {addItemToCart as addItemToCartAction} from '../../store/cart/actions'
+import {
+        addItemToCart as addItemToCartAction, 
+        } from '../../store/cart/actions'
 
 interface CardRouterProps {
     id: string;
@@ -22,7 +24,6 @@ interface PropsFromState {
 type AllProps = PropsFromState & RouteComponentProps<CardRouterProps> & PropsFromDispatch
 
 const addToCart = (id:number, addItemToCart: typeof addItemToCartAction) => {
-    console.log(id)
     addItemToCart({
         id,
         count: 1
