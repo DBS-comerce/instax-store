@@ -1,6 +1,9 @@
 export interface ItemCart {
     id: number
     count: number
+    price: number
+    name: string
+    image:string
 }
 
 
