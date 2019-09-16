@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom'
 
 import {Item as ItemType, ItemsState} from '../../store/items/types'
 import { ApplicationState } from '../../store'
-import {
-        addItemToCart as addItemToCartAction, 
-        } from '../../store/cart/actions'
+import { addItemToCart as addItemToCartAction, } from '../../store/cart/actions'
+import Counter from '../elements/Counter'
 
 interface CardRouterProps {
-    id: string;
+    id: string
 }
 
 interface PropsFromDispatch {
@@ -23,19 +22,28 @@ interface PropsFromState {
 
 type AllProps = PropsFromState & RouteComponentProps<CardRouterProps> & PropsFromDispatch
 
-const addToCart = (id:number, addItemToCart: typeof addItemToCartAction) => {
-    addItemToCart({
-        id,
-        count: 1
-    })
+const addToCart = (itemCardInfo: ItemType, addItemToCart: typeof addItemToCartAction, count: number) => {
+    const {id, name, image, price} = itemCardInfo
+    if(count > 0){
+        alert(`${name} added to cart`)
+        addItemToCart({
+            id,
+            name,
+            image,
+            price,
+            count
+        })
+    }else{
+        alert('Please select valid count of Item')
+    }
 }
 
 const ItemCard: React.FC<AllProps> = (props) => {
     const { id } = props.match.params;
     const {items: {data}, addItemToCart} = props;
-    console.log(props)
+    const itemCard: ItemType = getItem(data, parseInt(id));
+    const [count, setCount] = useState(0);
     
-    const itemCard: ItemType = getItem(data, parseInt(id))
     return (
         <div className="detail-container">
             <div className="detail-main">
@@ -48,9 +56,14 @@ const ItemCard: React.FC<AllProps> = (props) => {
                         <div className="item-description">{itemCard.description}</div>
                         <div className="item-price">{itemCard.price} $</div>
                     </div>
+                    <Counter
+                        upCount={()=>setCount(count + 1)}
+                        downCount={()=>setCount(count - 1)}
+                        count={count}
+                    />
                     <div className="item-cart-button" >
                         <div 
-                        onClick={() => addToCart(itemCard.id, addItemToCart)}
+                        onClick={() => (addToCart(itemCard, addItemToCart, count), setCount(0)) }
                         className="item-cart-button__text">
                             Add to cart
                         </div>
