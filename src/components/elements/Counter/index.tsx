@@ -1,4 +1,5 @@
 import React from 'react';
+import './counter.scss'
 
 interface ICounter {
     upCount: () => void
@@ -11,9 +12,9 @@ const Counter: React.FC<ICounter> = (props) => {
   return (
     <div className='counter'>
         <div className='counter-buttons'>
-            <button className='counter-decrement' onClick={()=>props.downCount()}>-</button>
+            <div className='counter-decrement' onClick={()=>props.downCount()}>-</div>
             <span className='counter-count'>{props.count}</span>
-            <button className='counter-decrement' onClick={()=>props.upCount()} >+</button>
+            <div className='counter-decrement' onClick={()=>props.upCount()} >+</div>
         </div>
     </div>
   );

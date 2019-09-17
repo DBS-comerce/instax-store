@@ -1,0 +1,32 @@
+.counter{
+    width: fit-content;
+    position: relative;
+    display: inline-block;
+    user-select: none;
+}
+
+.counter-buttons{
+    display: inline-block;
+    width:97px;
+    user-select: none;
+}
+
+.counter-decrement{
+    display: inline-block;
+    background-color: #edeef0;
+    cursor: pointer;
+    width: 30px;
+    font-size: 25px;
+    margin: 0;
+    border: 1px solid #61606063;
+    user-select: none;
+}
+
+.counter-count{
+    display: inline-block;
+    width: 30px;
+    font-size: 25px;
+    background-color: #edeef0;
+    border: 1px solid  #61606063;
+    user-select: none;
+}

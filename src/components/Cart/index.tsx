@@ -4,16 +4,19 @@ import { connect } from 'react-redux';
 
 import { ApplicationState } from '../../store'
 import {ItemCart as ItemCartType, CartState} from '../../store/cart/types'
+import {upItemCount as upItemCountAction, downItemCount as downItemCountAction} from '../../store/cart/actions'
 import Counter from '../elements/Counter'
 
 
 interface PropsFromState {
     itemsCart: CartState
+    upItemCount: typeof upItemCountAction
+    downItemCount: typeof downItemCountAction
 }
 
 const Cart: React.FC<PropsFromState> = (props) => {
-    const {itemsCart: {data}} = props
-    const itemsCartList = cartItemsMap(data)
+    const {itemsCart: {data}, upItemCount, downItemCount} = props
+    const itemsCartList = cartItemsMap(data, upItemCount, downItemCount)
     console.log(data)
     return (
         <div className="cart-info">
@@ -25,7 +28,7 @@ const Cart: React.FC<PropsFromState> = (props) => {
             </div>
             <div className="cart-total">
                 <div className="item" >
-                    Total
+                    Total ammount: {getSumm(data)} $
                 </div>
             </div>
 
@@ -33,11 +36,7 @@ const Cart: React.FC<PropsFromState> = (props) => {
     );
 }
 
-const changeCount = (type: 'up' | 'down') =>{
-    console.log(type)
-}
-
-const cartItemsMap = (items: ItemCartType[]) => {
+const cartItemsMap = (items: ItemCartType[], upItemCount: typeof upItemCountAction, downItemCount: typeof downItemCountAction) => {
     const itemsCartList = items.map(item => {
             console.log(items)
             return (
@@ -51,12 +50,19 @@ const cartItemsMap = (items: ItemCartType[]) => {
                             <div className="item-cart-name">
                                 {item.name}
                             </div>
-                            <div className="item-cart-price">
-                                {item.price} $
+                            <div className="item-cart-right">
+                                <div className="item-cart-counter">
+                                    <Counter
+                                        upCount={() => upItemCount(item.id)}
+                                        downCount={() => downItemCount(item.id)}
+                                        count={item.count}
+                                    />
+                                </div>
+                                <div className="item-cart-price">
+                                    Summ: {item.count * item.price} $
+                                </div>
                             </div>
-                        <div className="item-cart-count">
-                            Count {item.count}
-                        </div>
+
                     </div>
                 </div>
             )
@@ -64,8 +70,23 @@ const cartItemsMap = (items: ItemCartType[]) => {
         return itemsCartList
 }
 
+const getSumm = (cartItems: ItemCartType[]) =>{
+    
+    let summ: number = 0
+    cartItems.forEach((item: ItemCartType) => {
+        summ+=(item.price * item.count)
+    });
+
+    return summ;
+}
+
 const mapStateToProps = (state: ApplicationState) => ({
     itemsCart: state.itemsCart,
 })
+
+const mapDispatchToProps = {
+    upItemCount: upItemCountAction,
+    downItemCount: downItemCountAction
+}
   
-export default connect(mapStateToProps, null)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
