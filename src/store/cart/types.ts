@@ -15,4 +15,6 @@ export interface CartState {
 
 export enum CartActionTypes {
     ADD_ITEMS_TO_CART = 'ADD_ITEMS_TO_CART',
+    UP_ITEM_COUNT = 'UP_ITEM_COUNT',
+    DOWN_ITEM_COUNT = 'DOWN_ITEM_COUNT',
 }

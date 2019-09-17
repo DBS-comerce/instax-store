@@ -56,16 +56,21 @@ const ItemCard: React.FC<AllProps> = (props) => {
                         <div className="item-description">{itemCard.description}</div>
                         <div className="item-price">{itemCard.price} $</div>
                     </div>
-                    <Counter
-                        upCount={()=>setCount(count + 1)}
-                        downCount={()=>setCount(count - 1)}
-                        count={count}
-                    />
-                    <div className="item-cart-button" >
+                    <div className="item-addcart-section">
+                        <div className="item-counter">
+                            <Counter
+                                upCount={()=>setCount(count + 1)}
+                                downCount={()=>setCount(count - 1)}
+                                count={count}
+                            />
+                        </div>
                         <div 
                         onClick={() => (addToCart(itemCard, addItemToCart, count), setCount(0)) }
-                        className="item-cart-button__text">
-                            Add to cart
+                        className="item-cart-button" >
+                            <div 
+                            className="item-cart-button__text">
+                                Add to cart
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ const App: React.FC<AllProps> = (props) => {
           <section className="content">
             
               <Switch>
-                <Route exact path="/" component={ItemList} />
+                <Route exact path="/catalog" component={ItemList} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/item-card/:id" component={ItemCard} />
                 <Route exact path="/cart" component={Cart} />
