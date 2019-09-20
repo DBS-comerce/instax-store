@@ -1,11 +1,13 @@
-import instaxPng from '../../assets/img/instax.jpg';
-import instaxRedPng from '../../assets/img/instax_red.jpg';
+import instaxJpg from '../../assets/img/instax.jpg';
+import instaxRedJpg from '../../assets/img/instax_red.jpg';
+import instaxClassicJpg from '../../assets/img/instax_classic.jpg';
+import instaxPinkJpg from '../../assets/img/instax_pink.jpg';
 
 export default [
     {
         id: 1,
         name: 'Instax',
-        image: instaxPng,
+        image: instaxJpg,
         type: 'polaroid_photo',
         description: 'A long Item decription A long Item decription A long Item decription A long Item decription A long Item decription ',
         price: 100,
@@ -13,7 +15,7 @@ export default [
     {
         id: 2,
         name: 'Instax Toy 4',
-        image: instaxRedPng,
+        image: instaxRedJpg,
         type: 'polaroid_photo',
         description: 'A long Item decription A long Item decription A long Item decription A long Item decription A long Item decription ',
         price: 120,
@@ -21,17 +23,17 @@ export default [
     {
         id: 3,
         name: 'Instax Old',
-        image: 'mockMenu01',
+        image: instaxPinkJpg,
         type: 'polaroid_photo',
         description: 'A long Item decription A long Item decription A long Item decription A long Item decription A long Item decription ',
-        price: 100,
+        price: 130,
     },
     {
         id: 4,
         name: 'Instax Classic',
-        image: 'mockMenu01',
+        image: instaxClassicJpg,
         type: 'polaroid_photo',
         description: 'A long Item decription A long Item decription A long Item decription A long Item decription A long Item decription ',
-        price: 20,
+        price: 150,
     },
 ]
