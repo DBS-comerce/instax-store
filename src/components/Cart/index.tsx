@@ -17,18 +17,22 @@ interface PropsFromState {
 const Cart: React.FC<PropsFromState> = (props) => {
     const {itemsCart: {data}, upItemCount, downItemCount} = props
     const itemsCartList = cartItemsMap(data, upItemCount, downItemCount)
-    console.log(data)
     return (
         <div className="cart-info">
             <div className="cart-items">
                 <h1>Cart</h1>
                 <div>
-                    {itemsCartList}
+                    {data.length > 0 ? itemsCartList : 'Cart is empty :('}
                 </div>
             </div>
             <div className="cart-total">
                 <div className="item" >
-                    Total ammount: {getSumm(data)} $
+                    <div className="cart-ammount-text">
+                        Total ammount:
+                    </div>
+                    <div className="cart-ammount-price">
+                        {getSumm(data)} $
+                    </div>
                 </div>
             </div>
 
@@ -38,7 +42,6 @@ const Cart: React.FC<PropsFromState> = (props) => {
 
 const cartItemsMap = (items: ItemCartType[], upItemCount: typeof upItemCountAction, downItemCount: typeof downItemCountAction) => {
     const itemsCartList = items.map(item => {
-            console.log(items)
             return (
                 <div className="item cart">
                     <div className="item-cart-info">
