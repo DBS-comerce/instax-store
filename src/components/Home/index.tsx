@@ -4,23 +4,24 @@ import Masonry from 'react-masonry-component';
 
 import { ApplicationState } from '../../store'
 import gallery from '../../mockData/gallery'
-
-
+import { ReactComponent as MountsSvg } from '../../assets/img/mounts.svg';
 
 const Home: React.FC = (props) => {
 
     const imgs = getImg()
     return (
         <div className="home-container">
+            <div className="welcome-head">
+                <MountsSvg />
+            </div>
             <div className="home-content" >
-                <div className="home-title">
-                    Welcome to React demo site!
-                </div>
+                {/* <div className="home-title">
+                </div> */}
                 <div className="home-description">
-                    This is the React demo site made for demonstration frontend mock-up of Instax shop.
+                    This site is made for demonstration frontend mock-up of Instax shop.
                     There presented some e-commerce stuff like catalog and cart.
-                    The app using static data and not connected to API. 
-                    List of tech You can see the list of used technologies on the page about.
+                    The app using static data and not connected to backend. 
+                    You can see the list of used technologies on the page <a href="about">about</a>.
                 </div>
                 <div className="home-gallery">
                     <Masonry

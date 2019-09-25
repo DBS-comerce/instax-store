@@ -9,7 +9,7 @@ import ItemList from './components/Items/ItemList'
 import ItemCard from './components/Items/ItemCard'
 import LeftSidebar from './components/LeftSidebar'
 import Home from './components/Home'
-import About from './components/about'
+import About from './components/About'
 import Cart from './components/Cart'
 import {addNewElement as addNewElementAction} from './store/items/actions'
 
