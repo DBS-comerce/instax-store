@@ -331,6 +331,11 @@ html, body, #root, main {
   font-weight: 600;
 }
 
+.empty-cart-text{
+  margin-top:10px;
+  font-size: 20px;
+}
+
 .tech-row{
   display: inline-block;
   margin-left: 15px;
@@ -355,6 +360,11 @@ html, body, #root, main {
 
 .upwork-color{
   color: #6FDA44 !important;
+  font-weight: 700;
+}
+
+.gitlab-color{
+  color: #F56A25 !important;
   font-weight: 700;
 }
 

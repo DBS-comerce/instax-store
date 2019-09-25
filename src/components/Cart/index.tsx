@@ -22,7 +22,7 @@ const Cart: React.FC<PropsFromState> = (props) => {
             <div className="cart-items">
                 <h1>Cart</h1>
                 <div>
-                    {data.length > 0 ? itemsCartList : 'Cart is empty :('}
+                    {data.length > 0 ? itemsCartList : cartIsEmpty}
                 </div>
             </div>
             <div className="cart-total">
@@ -72,6 +72,18 @@ const cartItemsMap = (items: ItemCartType[], upItemCount: typeof upItemCountActi
         })
         return itemsCartList
 }
+
+const cartIsEmpty = (
+    <div className="item cart">
+        <div className="empty-cart-text">
+            Cart is empty :(
+        </div>
+        <div className="empty-cart-text">
+            You can choose and add items in the catalog section.
+        </div>
+
+    </div>
+)
 
 const getSumm = (cartItems: ItemCartType[]) =>{
     

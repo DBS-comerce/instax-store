@@ -7,7 +7,6 @@ interface LeftSidebarProps {
 }
 
 const LeftSidebar: React.FC<LeftSidebarProps> = (props) => {
-  const {history} = props;
   return (
     <div className="sidebar-content">
       <Link to="/">
