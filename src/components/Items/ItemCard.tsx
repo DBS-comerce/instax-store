@@ -81,7 +81,7 @@ const ItemCard: React.FC<AllProps> = (props) => {
 }
 
 const getItem = (data: ItemType[], id: number) => {
-    const itemCard: ItemType = data.filter((m: ItemType) =>  m.id ==  id)[0]
+    const itemCard: ItemType = data.filter((m: ItemType) =>  m.id ===  id)[0]
     return itemCard
 }
 

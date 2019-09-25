@@ -3,8 +3,6 @@ import reduxImg from './img/redux.png'
 import reactImg from './img/react.png'
 import tsImg from './img/ts.png'
 import firebaseImg from './img/firebase.png'
-import upworkImg from './img/upwork.png'
-import linkedinImg from './img/linkedin.png'
 
 
 const About: React.FC= (props) => {
@@ -15,17 +13,23 @@ const About: React.FC= (props) => {
         <div className="about-content">
           <h1>About</h1>
             <div className="about-text">
-                Hi! My name is Dmitry I'm frontend/backend developer. 
-                I create this site to demonstrate some my frontend skills.
-                You can connect me by upwork {upworkLink}
+                Hi! My name is Dmitry I'm frontend and backend developer. 
+                I create this site to demonstrate some of my skills.
+                All projects code is stored in {GitLabLink}
             </div>
             <br/>
             {TechTable}
             <br/>
+            <br/>
+            <br/>
             <div className="about-text">
               This is the monolit React app written with TypeScript. 
               For the storing data it uses Redux. 
-              Now all data is statick JSON but it will be connected to API in future.   
+              Now all data is statick JSON but it will be connected to API in future.
+            </div>
+            <br/>
+            <div className="about-text">
+              If you iterested you can connect me by {upworkLink}    
             </div>
             <br/>
           </div>
@@ -53,15 +57,21 @@ const TechTable = (
 )
 
 const upworkLink = (
-  <a className="upwork-color" style={{verticalAlign: 'sub'}} href="https://www.upwork.com/freelancers/~014369aa2396e5de93">
-    <img style={{width:'40px'}} src={upworkImg} alt="upwork"/>
+  <a className="upwork-color" href="https://www.upwork.com/freelancers/~014369aa2396e5de93">
+    UpWork
   </a>
 )
 
-const linkedinLink = (
-  <a className="linkedin-color" href="https://www.upwork.com/freelancers/~014369aa2396e5de93">
-    <img style={{width:'60px'}} src={linkedinImg} alt="linkedin"/>
+const GitLabLink = (
+  <a className="gitlab-color" href="https://gitlab.com/dmitry.stukalo/instax_store/">
+    GitLab
   </a>
 )
+
+// const linkedinLink = (
+//   <a className="linkedin-color" href="">
+//     Linkedin
+//   </a>
+// )
 
 export default About;
