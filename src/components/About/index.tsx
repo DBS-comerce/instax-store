@@ -13,8 +13,8 @@ const About: React.FC= (props) => {
         <div className="about-content">
           <h1>About</h1>
             <div className="about-text">
-                Hi! My name is Dmitry I'm frontend and backend developer. 
-                I create this site to demonstrate some of my skills.
+                Hi! My name is Dmitry. I'm a frontend and backend developer. 
+                I created this site to demonstrate some of my skills.
                 All projects code is stored in {GitLabLink}
             </div>
             <br/>
@@ -24,12 +24,12 @@ const About: React.FC= (props) => {
             <br/>
             <div className="about-text">
               This is the monolit React app written with TypeScript. 
-              For the storing data it uses Redux. 
-              Now all data is statick JSON but it will be connected to API in future.
+              For storing the data it uses Redux. 
+              Now all data is static JSON but it can be connected to API in future.
             </div>
             <br/>
             <div className="about-text">
-              If you iterested you can connect me by {upworkLink}    
+              If you are interested you can connect me by {upworkLink}    
             </div>
             <br/>
           </div>

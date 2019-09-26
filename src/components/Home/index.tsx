@@ -18,10 +18,10 @@ const Home: React.FC = (props) => {
                 {/* <div className="home-title">
                 </div> */}
                 <div className="home-description">
-                    This site is made for demonstration frontend mock-up of Instax shop.
-                    There presented some e-commerce stuff like catalog and cart.
-                    The app using static data and not connected to backend. 
-                    You can see the list of used technologies on the page <a href="about">about</a>.
+                    This site is made to demonstrate frontend mock-up of Instax shop.
+                    The site presents some e-commerce stuff like catalog and cart.
+                    The app uses static data and isn't connected to backend yet. 
+                    You can see the list of used technologies on the about page.
                 </div>
                 <div className="home-gallery">
                     <Masonry
